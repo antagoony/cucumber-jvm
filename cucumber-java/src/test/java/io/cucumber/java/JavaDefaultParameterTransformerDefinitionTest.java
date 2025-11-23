@@ -40,7 +40,8 @@ class JavaDefaultParameterTransformerDefinitionTest {
             String.class, Type.class);
         JavaDefaultParameterTransformerDefinition definition = new JavaDefaultParameterTransformerDefinition(method,
             lookup);
-        Object transformed = definition.parameterByTypeTransformer(Locale.ENGLISH).transform("something", String.class);
+        Object transformed = definition.localeParameterByTypeTransformer(Locale.ENGLISH).transform("something",
+            String.class);
         assertThat(transformed, is("transform_string_to_type"));
     }
 
@@ -54,7 +55,8 @@ class JavaDefaultParameterTransformerDefinitionTest {
             "transform_string_to_type_with_locale", String.class, Type.class, Locale.class);
         JavaDefaultParameterTransformerDefinition definition = new JavaDefaultParameterTransformerDefinition(method,
             lookup);
-        Object transformed = definition.parameterByTypeTransformer(Locale.ENGLISH).transform("something", String.class);
+        Object transformed = definition.localeParameterByTypeTransformer(Locale.ENGLISH).transform("something",
+            String.class);
         assertThat(transformed, is("transform_string_to_type_with_locale_en"));
     }
 
@@ -78,7 +80,7 @@ class JavaDefaultParameterTransformerDefinitionTest {
             Object.class, Type.class);
         JavaDefaultParameterTransformerDefinition definition = new JavaDefaultParameterTransformerDefinition(method,
             lookup);
-        String transformed = (String) definition.parameterByTypeTransformer(Locale.ENGLISH).transform("something",
+        String transformed = (String) definition.localeParameterByTypeTransformer(Locale.ENGLISH).transform("something",
             String.class);
         assertThat(transformed, is("transform_object_to_type"));
     }
@@ -93,7 +95,7 @@ class JavaDefaultParameterTransformerDefinitionTest {
             "transform_object_to_type_with_locale", Object.class, Type.class, Locale.class);
         JavaDefaultParameterTransformerDefinition definition = new JavaDefaultParameterTransformerDefinition(method,
             lookup);
-        String transformed = (String) definition.parameterByTypeTransformer(Locale.ENGLISH).transform("something",
+        String transformed = (String) definition.localeParameterByTypeTransformer(Locale.ENGLISH).transform("something",
             String.class);
         assertThat(transformed, is("transform_object_to_type_with_locale_en"));
     }

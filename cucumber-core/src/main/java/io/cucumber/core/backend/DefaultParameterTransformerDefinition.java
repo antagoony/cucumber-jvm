@@ -1,5 +1,6 @@
 package io.cucumber.core.backend;
 
+import io.cucumber.cucumberexpressions.LocaleParameterByTypeTransformer;
 import io.cucumber.cucumberexpressions.ParameterByTypeTransformer;
 import org.apiguardian.api.API;
 
@@ -10,8 +11,8 @@ public interface DefaultParameterTransformerDefinition extends Located {
 
     ParameterByTypeTransformer parameterByTypeTransformer();
 
-    default ParameterByTypeTransformer parameterByTypeTransformer(Locale locale) {
-        return this.parameterByTypeTransformer();
+    default LocaleParameterByTypeTransformer localeParameterByTypeTransformer(Locale locale) {
+        return (fromValue, toValueType) -> this.parameterByTypeTransformer().transform(fromValue, toValueType);
     }
 
 }

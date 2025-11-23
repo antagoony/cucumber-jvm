@@ -21,7 +21,7 @@ import io.cucumber.core.stepexpression.StepExpressionFactory;
 import io.cucumber.core.stepexpression.StepTypeRegistry;
 import io.cucumber.cucumberexpressions.CucumberExpression;
 import io.cucumber.cucumberexpressions.Expression;
-import io.cucumber.cucumberexpressions.ParameterByTypeTransformer;
+import io.cucumber.cucumberexpressions.LocaleParameterByTypeTransformer;
 import io.cucumber.cucumberexpressions.ParameterType;
 import io.cucumber.cucumberexpressions.RegularExpression;
 import io.cucumber.datatable.TableCellByTypeTransformer;
@@ -277,7 +277,7 @@ final class CachingGlue implements Glue {
 
         if (defaultParameterTransformers.size() == 1) {
             DefaultParameterTransformerDefinition definition = defaultParameterTransformers.get(0);
-            ParameterByTypeTransformer transformer = definition.parameterByTypeTransformer(locale);
+            LocaleParameterByTypeTransformer transformer = definition.localeParameterByTypeTransformer(locale);
             stepTypeRegistry.setDefaultParameterTransformer(transformer);
         } else if (defaultParameterTransformers.size() > 1) {
             throw new DuplicateDefaultParameterTransformers(defaultParameterTransformers);

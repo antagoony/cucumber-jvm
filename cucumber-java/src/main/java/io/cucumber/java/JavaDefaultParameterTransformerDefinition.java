@@ -2,6 +2,7 @@ package io.cucumber.java;
 
 import io.cucumber.core.backend.DefaultParameterTransformerDefinition;
 import io.cucumber.core.backend.Lookup;
+import io.cucumber.cucumberexpressions.LocaleParameterByTypeTransformer;
 import io.cucumber.cucumberexpressions.ParameterByTypeTransformer;
 
 import java.lang.reflect.Method;
@@ -66,11 +67,11 @@ class JavaDefaultParameterTransformerDefinition extends AbstractGlueDefinition
 
     @Override
     public ParameterByTypeTransformer parameterByTypeTransformer() {
-        return this.parameterByTypeTransformer(null);
+        return this.localeParameterByTypeTransformer(null);
     }
 
     @Override
-    public ParameterByTypeTransformer parameterByTypeTransformer(Locale locale) {
+    public LocaleParameterByTypeTransformer localeParameterByTypeTransformer(Locale locale) {
         return (fromValue, toValueType) -> execute(fromValue, toValueType, locale);
     }
 
